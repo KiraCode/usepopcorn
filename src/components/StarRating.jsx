@@ -16,8 +16,10 @@ const StarRating = ({
   color = "#faf122",
   size = 32,
   className,
+  onSetRating,
+  defaultRating = 0
 }) => {
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
   const textStyle = {
     lineHeight: "1",
@@ -26,9 +28,8 @@ const StarRating = ({
     fontSize: `${size / 1.5}px`,
   };
   function handleRating(rating) {
-    console.log(rating);
-
     setRating(rating);
+    onSetRating(rating);
   }
   return (
     <div>
