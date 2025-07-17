@@ -11,13 +11,6 @@ const starContainerStyle = {
   gap: "4px",
 };
 
-const textStyle = {
-  lineHeight: "1",
-  margin: "0",
-  color,
-  fontSize: `${size / 1.5}px`,
-};
-
 const StarRating = ({
   maxRating = 5,
   color = "#faf122",
@@ -26,14 +19,21 @@ const StarRating = ({
 }) => {
   const [rating, setRating] = useState(0);
   const [tempRating, setTempRating] = useState(0);
-
+  const textStyle = {
+    lineHeight: "1",
+    margin: "0",
+    color,
+    fontSize: `${size / 1.5}px`,
+  };
   function handleRating(rating) {
+    console.log(rating);
+
     setRating(rating);
   }
   return (
     <div>
       <div style={containerStyle}>
-        <div style={{ starContainerStyle }}>
+        <div style={starContainerStyle}>
           {Array.from({ length: maxRating }, (_, i) => (
             <Star
               key={i}
@@ -62,9 +62,9 @@ function Star({ onRate, full, onHoverIn, onHoverOut, color, size, className }) {
   };
   return (
     <span
-      role=" button"
+      role="button"
       style={starStyle}
-      onclick={onRate}
+      onClick={onRate}
       onMouseEnter={onHoverIn}
       onMouseLeave={onHoverOut}
       className={className}
