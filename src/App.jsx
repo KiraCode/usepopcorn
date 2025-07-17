@@ -86,6 +86,9 @@ export default function App() {
     setSelectedId(id);
   }
 
+  function handleBackButton() {
+    setSelectedId(null);
+  }
   return (
     <>
       <Navbar>
@@ -104,7 +107,10 @@ export default function App() {
         </Box>
         <Box>
           {selectedId ? (
-            <MovieDetails selectedId={selectedId} />
+            <MovieDetails
+              selectedId={selectedId}
+              onBackButton={handleBackButton}
+            />
           ) : (
             <>
               <WatchedSummary watched={watched} />
@@ -209,8 +215,14 @@ function Movie({ movie, onSelectMovie }) {
   );
 }
 
-function MovieDetails({ selectedId }) {
-  return <div className="details">{selectedId}</div>;
+function MovieDetails({ selectedId, onBackButton }) {
+  return (
+    <div className="details">
+      <button className="btn-back" onClick={onBackButton}>
+        &larr;
+      </button>
+    </div>
+  );
 }
 function WatchedSummary({ watched }) {
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
