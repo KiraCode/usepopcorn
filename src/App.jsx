@@ -72,7 +72,7 @@ export default function App() {
         setIsLoading(true);
         setError("");
         const res = await fetch(
-          `http://www.omdbapi.com/?i=tt3896198&apikey=${KEY}&s=${query}`
+          `https://www.omdbapi.com/?i=tt3896198&apikey=${KEY}&s=${query}`
         );
         const data = await res.json();
         if (data.Response === "False") throw new Error("Movies no found");
